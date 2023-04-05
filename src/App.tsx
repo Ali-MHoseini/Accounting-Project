@@ -1,11 +1,16 @@
-
+import { Route, Routes} from 'react-router-dom'
+import {Login} from './pages/pages'
 function App() {
 
 
   return (
-    <div>
-        APP
-    </div>
+    <>
+        <Routes>
+            <Route path='/' element={<Login />}/>
+            {/*<Route path='/cart' element={} />*/}
+            {/*    <Route path='*'/>*/}
+        </Routes>
+    </>
   )
 }
 
