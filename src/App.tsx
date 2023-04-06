@@ -1,8 +1,6 @@
 import { Route, Routes} from 'react-router-dom'
 import {Login} from './pages/pages'
 function App() {
-
-
   return (
     <>
         <Routes>
