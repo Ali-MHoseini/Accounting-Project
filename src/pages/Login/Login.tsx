@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import '../../assets/styles/styles.scss'
+import {useNavigate} from "react-router-dom";
 
 interface login {
     [index:string]:string
 }
 export const Login = ()=> {
+    const navigate = useNavigate()
     const numberRegex = new RegExp(/^(?:0|98|\+98|\+980|0098|098|00980)?(9\d{9})$/)
     const [hide,setHide] = useState<boolean>(false)
     const [remember,setRemember] = useState<boolean>(false)
@@ -21,7 +23,7 @@ export const Login = ()=> {
     const checkData = async () => {
         if(loginData.number && loginData.password) {
             try {
-               alert('OK')
+              navigate('/dashboard')
             }catch (err){
                 console.log(err)
             }

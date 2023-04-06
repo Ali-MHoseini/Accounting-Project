@@ -9,9 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.16",
     "bootstrap-icons": "^1.10.4",
+    "chart.js": "^4.2.1",
+    "faker": "^5.5.3",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
+    "react-vis": "^0.3.4",
     "sass": "^1.60.0"
   },
   "devDependencies": {
