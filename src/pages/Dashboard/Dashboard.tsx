@@ -1,148 +1,400 @@
 import React from 'react';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    ArcElement,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
-import {Line, Pie} from 'react-chartjs-2';
-import faker from 'faker';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,BarChart, Bar, Cell, Legend} from 'recharts';
 import '../../assets/styles/styles.scss'
-import {Menu} from "../../components/menu/Menu";
+import {Header} from "../../layouts/Header/Header";
+import {SideBar} from "../../layouts/SideBar/SideBar";
+import PeopleIcon from "@mui/icons-material/People";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
+import Pagination from "@mui/material/Pagination";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import {ColorBox} from "../../components/ColorBox/ColorBox";
+import {DashboardCusRow} from "../../components/DasboardCusRow/DashboardCusRow";
+import {SearchBox} from "../../components/SearchBox/SearchBox";
 export const Dashboard = () => {
 
+    document.title = 'داشبورد مدیریت'
 
     //---------------------Chart------------------------------
-    ChartJS.register(
-        CategoryScale,
-        ArcElement,
-        LinearScale,
-        PointElement,
-        LineElement,
-        Title,
-        Tooltip,
-        Legend
-    );
-    //--------------LineChart Date--------------------------------
-
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top' as const,
-            },
-            title: {
-                display: true,
-                text: 'نمودار صورتحساب های وارد شده',
-            },
+    const data = [
+        {
+            name: '1',
+            "جمع کل": 4000,
+            pv: 2400,
+            amt: 2400,
         },
-    };
-
-    const labels = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور'];
-
-    const data = {
-        labels,
-        datasets: [
-            {
-                label: ' ماه گذشته 654253 ریال',
-                data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            },
-            {
-                label: 'این ماه 775631 ریال',
-                data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-                borderColor: 'rgb(53, 162, 235)',
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
-            },
-        ],
-    };
-    //-----------------------------------------------------------------
-
-    //---------------------PieChart Data--------------------------------
-    const Pieoptions = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top' as const,
-            },
-            title: {
-                display: true,
-                text: 'وضعیت صورتحساب های قبلی',
-            },
+        {
+            name: '2',
+            "جمع کل": 3000,
+            pv: 1398,
+            amt: 2210,
         },
-    };
-     const Piedata = {
-        labels: ['تایید شده', 'نیاز به تایید', 'نیاز به استعلام', 'لغو شده'],
-        datasets: [
-            {
-                label: '# of Votes',
-                data: [12, 19, 3, 5],
-                backgroundColor: [
-                    'rgba(255,0,55,0.2)',
-                    'rgba(0,152,255,0.2)',
-                    'rgba(255,180,0,0.2)',
-                    'rgba(0,137,137,0.2)',
-                ],
-                borderColor: [
-                    'rgb(255,0,54)',
-                    'rgb(0,154,255)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgb(0,137,137)',
-                ],
-                borderWidth: 1,
-            },
-        ],
-    };
-    //------------------------------------------------------------------
+        {
+            name: '3',
+            "جمع کل": 2000,
+            pv: 9800,
+            amt: 2290,
+        },
+        {
+            name: '4',
+            "جمع کل": 2780,
+            pv: 3908,
+            amt: 2000,
+        },
+        {
+            name: '5',
+            "جمع کل": 1890,
+            pv: 4800,
+            amt: 2181,
+        },
+        {
+            name: '6',
+            "جمع کل": 2390,
+            pv: 3800,
+            amt: 2500,
+        },
+        {
+            name: '7',
+            "جمع کل": 3490,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '8',
+            "جمع کل": 3250,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '9',
+            "جمع کل": 1850,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '10',
+            "جمع کل": 3150,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '11',
+            "جمع کل": 2450,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '12',
+            "جمع کل": 2490,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '13',
+            "جمع کل": 4000,
+            pv: 2400,
+            amt: 2400,
+        },
+        {
+            name: '14',
+            "جمع کل": 3000,
+            pv: 1398,
+            amt: 2210,
+        },
+        {
+            name: '15',
+            "جمع کل": 2000,
+            pv: 9800,
+            amt: 2290,
+        },
+        {
+            name: '16',
+            "جمع کل": 2780,
+            pv: 3908,
+            amt: 2000,
+        },
+        {
+            name: '17',
+            "جمع کل": 1890,
+            pv: 4800,
+            amt: 2181,
+        },
+        {
+            name: '18',
+            "جمع کل": 2390,
+            pv: 3800,
+            amt: 2500,
+        },
+        {
+            name: '19',
+            "جمع کل": 3490,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '20',
+            "جمع کل": 3250,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '21',
+            "جمع کل": 1850,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '22',
+            "جمع کل": 3150,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '23',
+            "جمع کل": 2450,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '24',
+            "جمع کل": 2490,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '25',
+            "جمع کل": 3250,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '26',
+            "جمع کل": 1850,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '27',
+            "جمع کل": 3150,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '28',
+            "جمع کل": 2450,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '29',
+            "جمع کل": 2490,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '30',
+            "جمع کل": 2450,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: '31',
+            "جمع کل": 2490,
+            pv: 4300,
+            amt: 2100,
+        },
+    ];
+    const data2 = [
+        {
+            name: 'فروردین',
+            "جمع کل": 4000,
+            pv: 2400,
+            amt: 2400,
+        },
+        {
+            name: 'اردیبهشت',
+            "جمع کل": 3000,
+            pv: 1398,
+            amt: 2210,
+        },
+        {
+            name: 'خرداد',
+            "جمع کل": 2000,
+            pv: 9800,
+            amt: 2290,
+        },
+        {
+            name: 'تیر',
+            "جمع کل": 2780,
+            pv: 3908,
+            amt: 2000,
+        },
+        {
+            name: 'مرداد',
+            "جمع کل": 1890,
+            pv: 4800,
+            amt: 2181,
+        },
+        {
+            name: 'شهریور',
+            "جمع کل": 2390,
+            pv: 3800,
+            amt: 2500,
+        },
+        {
+            name: 'مهر',
+            "جمع کل": 3490,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: 'ابان',
+            "جمع کل": 1890,
+            pv: 4800,
+            amt: 2181,
+        },
+        {
+            name: 'آذر',
+            "جمع کل": 2390,
+            pv: 3800,
+            amt: 2500,
+        },
+        {
+            name: 'دی',
+            "جمع کل": 3490,
+            pv: 4300,
+            amt: 2100,
+        },
+        {
+            name: 'بهمن',
+            "جمع کل": 2390,
+            pv: 3800,
+            amt: 2500,
+        },
+        {
+            name: 'اسفند',
+            "جمع کل": 3490,
+            pv: 4300,
+            amt: 2100,
+        },
+    ];
+
 
     return (
-        <div className='dashboard'>
-            <Menu />
-            <div className='dashboard__box'>
-                <div className='header__box'>
-                    <h1>داشبورد مدیریت</h1>
-                    <div style={{display: 'flex',gap: '3rem'}}>
-                        <div className='header__item'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 className="bi bi-receipt" viewBox="0 0 16 16">
-                                <path
-                                    d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
-                                <path
-                                    d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
-                            </svg>
-                            <p>10 صورتحساب</p>
+
+        <div style={{display:'flex'}}>
+            <SideBar/>
+            <div className='dashboard'>
+                <Header Title={`داشبورد مدیریت`}/>
+                <div className='dashboard__Box'>
+                    <div className='chartBox'>
+                        <div className='chart__rightBox'>
+                            <div className='chart__rightBoxItem'>
+                                <h4 style={{fontSize:'20px'}}>صورتحساب ماه اخیر</h4>
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <AreaChart
+                                        width={500}
+                                        height={400}
+                                        margin={{
+                                            top: 10,
+                                            right: 25,
+                                            left: 25,
+                                            bottom: 5,
+                                        }}
+                                        data={data}>
+                                        <CartesianGrid strokeDasharray="3 3" />
+                                        <XAxis
+                                            className='chart__xAxis'
+                                            dataKey="name"/>
+                                        <Tooltip />
+                                        <Area
+                                            type="monotone"
+                                            dataKey="جمع کل"
+                                            fill="#016fff"
+                                            style={{position:'relative',zIndex:'0'}}
+                                            />
+                                    </AreaChart>
+                                </ResponsiveContainer>
+                            </div>
+                            <div className='chart__rightBoxItem'>
+                                <div style={{display:"flex",justifyContent:'space-between'}}>
+                                    <h3>مشتری ها</h3>
+                                    <div className='chart__ItemIcon'>
+                                        <PeopleIcon/>
+                                    </div>
+                                </div>
+                                <h2>25</h2>
+                            </div>
+                            <div className='chart__rightBoxItem'>
+                                <div style={{display:"flex",justifyContent:'space-between'}}>
+                                    <h3>کالاها</h3>
+                                    <div className='chart__ItemIcon'>
+                                        <LocalMallIcon style={{color: '#016fff'}}/>
+                                    </div>
+                                </div>
+                                <h2>125</h2>
+                            </div>
                         </div>
-                        <div className='header__item'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 className="bi bi-file-earmark-person" viewBox="0 0 16 16">
-                                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                <path
-                                    d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
-                            </svg>
-                            <p>5 مشتری</p>
+                        <div className='chart__leftBox'>
+                            <h4 style={{fontSize:'20px'}}>صورتحساب ماه های اخیر</h4>
+                            <ResponsiveContainer width="100%" height="100%">
+                                <BarChart width={150} height={40} data={data2} barSize={35}>
+                                    <XAxis dataKey="name"/>
+                                    <Tooltip />
+                                    <Bar dataKey="جمع کل" fill="#2fd980" />
+                                </BarChart>
+                            </ResponsiveContainer>
                         </div>
-                        <div className='header__item'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 className="bi bi-collection" viewBox="0 0 16 16">
-                                <path
-                                    d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"/>
-                            </svg>
-                            <p>15 کالا</p>
+                    </div>
+                    <div className='billDetails__Box'>
+                        <div className='billDetails__RightBox'>
+                            <h4>صورتحساب های تایید شده</h4>
+                            <SearchBox SearchPlaceholder={"جستجو براساس شماره صورتحساب"} />
+                            <table>
+                                <thead>
+                                    <th>شماره صورتحساب</th>
+                                    <th>نام مشتری</th>
+                                    <th>تاریخ صورتحساب</th>
+
+                                </thead>
+                                <tbody>
+                                    <DashboardCusRow />
+                                    <DashboardCusRow />
+                                    <DashboardCusRow />
+                                    <DashboardCusRow />
+                                    <DashboardCusRow />
+                                    <DashboardCusRow />
+                                    <DashboardCusRow />
+                                    <DashboardCusRow />
+                                </tbody>
+                            </table>
+                            <Pagination count={10} color="primary" className='pagination'/>
+                        </div>
+                        <div className='billDetails__leftBox'>
+                            <ColorBox
+                                key={crypto.randomUUID()}
+                                Title={"صورتحساب های نیاز به تایید"}
+                                IconColor={"blue"}
+                                BackColor={"#6D66E1"}
+                                BackColor2={"#afaddc"}
+                                Icon={<ReceiptLongIcon/>}/>
+                            <ColorBox
+                                key={crypto.randomUUID()}
+                                Title={"صورتحساب های نیاز به استعلام"}
+                                IconColor={"yellow"}
+                                BackColor={"#F5CD2D"}
+                                BackColor2={"#e8e576"}
+                                Icon={<ReceiptLongIcon/>}/>
+                            <ColorBox
+                                key={crypto.randomUUID()}
+                                Title={"صورتحساب های لغو شده"}
+                                IconColor={"red"}
+                                BackColor={"#E85984"}
+                                BackColor2={"#e1b0c0"}
+                                Icon={<ReceiptLongIcon/>}/>
                         </div>
                     </div>
                 </div>
-                <div className='chart__box'>
-                    <Pie data={Piedata} options={Pieoptions}/>
-                    <Line options={options} data={data}/>
-                </div>
             </div>
-
         </div>
     )
 }

@@ -6,8 +6,10 @@ interface login {
     [index:string]:string
 }
 export const Login = ()=> {
+    document.title = 'ورود به پنل مدیریت';
     const navigate = useNavigate()
     const numberRegex = new RegExp(/^(?:0|98|\+98|\+980|0098|098|00980)?(9\d{9})$/)
+    const passwordRegex = new RegExp(/[0-9]/)
     const [hide,setHide] = useState<boolean>(false)
     const [remember,setRemember] = useState<boolean>(false)
     const [loginData,setLoginData] = useState<login>({
@@ -50,10 +52,27 @@ export const Login = ()=> {
             setLoginErr({...loginErr,numberErr:''})
         }
     },[loginData.number])
+
+    //---------------------------------------------------------------------
+
+    //------------------------check password with Regex--------------------
+
+    useEffect(()=>{
+        if(loginData.password){
+            if(!passwordRegex.test(loginData.password)){
+             setLoginErr({...loginErr,passwordErr:'لطفا کلمه عبور خود ر با پسوند درست وارد کنید'})
+            }else{
+                setLoginErr({...loginErr,passwordErr:''})
+            }
+        }else{
+            setLoginErr({...loginErr,passwordErr:''})
+        }
+    },[loginData.password])
     //------------------------------------------------
     return(
         <div className='login__page'>
-            <img src='../../src/assets/images/login_image.png' alt='loginImage' />
+            <h5>طراحی و پیاده سازی توسط سپنتا فینتک</h5>
+            <img src='https://s2.uupload.ir/files/login_image_us4s.png' alt='loginImage' crossOrigin='anonymous' />
             <div className='login__form'>
                 <h1>خوش آمدید!</h1>
                 <div className='form'>

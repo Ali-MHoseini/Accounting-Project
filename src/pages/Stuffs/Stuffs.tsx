@@ -1,11 +1,11 @@
 import React from "react";
-import {Menu} from "../../components/menu/Menu";
+// import {Menu} from "../../layouts/SideBar/SideBar";
 import Pagination from "@mui/material/Pagination";
 
 export const Stuffs = () => {
     return(
         <div className='dashboard'>
-            <Menu />
+            {/*<Menu />*/}
             <div className='dashboard__box'>
                 <div className='header__box'>
                     <h1>کالاها و خدمات</h1>

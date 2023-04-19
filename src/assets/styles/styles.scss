@@ -1,33 +1,137 @@
-@font-face {
-  font-family:'font-regular';
-  src:url('../fonts/Anjoman-Regular.ttf');
-}
-@font-face {
-  font-family:'font-light';
-  src:url('../fonts/Anjoman-Light.ttf');
-}
-@font-face {
-  font-family:'font-bold';
-  src:url('../fonts/Anjoman-Bold.ttf');
-}
-@font-face {
-  font-family:'font-numReg';
-  src:url('../fonts/AnjomanFaNum-Regular.ttf');
-}
-@font-face {
-  font-family:'font-numLight';
-  src:url('../fonts/AnjomanFaNum-Light.ttf');
-}
-@font-face {
-  font-family:'font-numBold';
-  src:url('../fonts/AnjomanFaNum-Bold.ttf');
-}
-
 $onyx: #373B3E;
 $poppy:#D33A39;
 $emerald: #2fd980;
 $seaSalt:#F9F9F9;
+$textAndIcon:#32325D;
+$background:#f6f6fb;
+$backgroundBox:#fcfbfe;
 
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2FD980 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #2FD980;
+  border-radius: 8px;
+  border: 3px none #ffffff;
+}
+
+@font-face {
+  font-family:'font-regular';
+  src:url('../Fonts/Anjoman-Regular.ttf') ;
+}
+@font-face {
+  font-family:'font-light';
+  src:url('../Fonts/Anjoman-Light.ttf');
+}
+@font-face {
+  font-family:'font-bold';
+  src:url('../Fonts/Anjoman-Bold.ttf');
+}
+@font-face {
+  font-family:'font-numReg';
+  src:url('../Fonts/AnjomanFaNum-Regular.ttf');
+}
+@font-face {
+  font-family:'font-numLight';
+  src:url('../Fonts/AnjomanFaNum-Light.ttf');
+}
+@font-face {
+  font-family:'font-numBold';
+  src:url('../Fonts/AnjomanFaNum-Bold.ttf');
+}
+
+
+
+.searchBox{
+    font-family:font-numReg;
+    width:max-content;
+    height: max-content;
+    border: 1px solid #d3d3d3;
+    background-color: transparent;
+    border-radius:0.5rem;
+    display: flex;
+    align-items: center;
+    gap:1rem ;
+    .searchBox__items {
+      background-color: transparent;
+      width: 13.25rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      border-left: 1px solid #d3d3d3;
+
+      .DatePicker{
+        padding-right:0.5rem ;
+        background-color: transparent;
+        font-family:font-numReg;
+        width: 11.5rem;
+        height: 100%;
+        border:none;
+        outline:none;
+        font-size: 12px;
+        cursor:pointer;
+      }
+
+      .searchBox__input{
+        padding-right:0.5rem ;
+        background-color: transparent;
+        font-family:font-numReg;
+        width: 100%;
+        height: 100%;
+        border:none;
+        outline:none;
+        font-size: 12px;
+      }
+    }
+}
+.pagination{
+  direction: ltr;
+  .MuiPagination-ul{
+    li{
+      font-size: 20px;
+      .MuiButtonBase-root{
+        font-family: font-numReg;
+      }
+    }
+  }
+}
+.active{
+  background-color:#016fff;
+  color: white;
+  font-size: 14px;
+  font-family: font-numReg;
+  width: 95%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  text-decoration: none;
+  gap: 2.5rem;
+  border-radius: 0.25rem;
+  text-align: center;
+  padding-right: 1.5rem;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
 .login__page {
   width: 100%;
   height: 100vh;
@@ -35,8 +139,15 @@ $seaSalt:#F9F9F9;
   gap: 4rem;
   justify-content:center;
   align-items:center;
+  h5{
+    font-family: font-light;
+    color: $textAndIcon;
+    position: absolute;
+    bottom:20px;
+    left:45%;
+  }
   img{
-    width: 650px;
+    width: 550px;
   }
   .login__form{
     width: 25rem;
@@ -44,25 +155,26 @@ $seaSalt:#F9F9F9;
     padding: 1.5rem;
     display: flex;
     flex-direction:column;
-    gap: 2rem;
+    gap: 4rem;
 
     h1{
-      font-family:font-light;
+      font-family:font-regular;
+      font-size: 1.75rem;
     }
     .form {
       display: flex;
       flex-direction:column;
-      gap: 1rem;
-      align-items:center;
+      gap: 2rem;
+      font-size: 16px;
 
       button{
         width: 100%;
         height: 3rem;
-        background-color: $emerald;
+        background-color: #61C877;
         border: none;
-        border-radius:1rem;
+        border-radius:0.5rem;
         outline: none;
-        font-family: font-bold;
+        font-family: font-regular;
         font-size:large;
         color: $seaSalt;
         cursor: pointer;
@@ -76,6 +188,7 @@ $seaSalt:#F9F9F9;
       h4 {
         align-self: flex-start;
         font-family: font-light;
+        font-size: 1rem;
         color: blue;
         text-decoration: underline;
         cursor: pointer;
@@ -86,24 +199,27 @@ $seaSalt:#F9F9F9;
       }
 
       .login__input{
+        width: 100%;
         display: flex;
         padding: 0.1rem;
-        width: max-content;
         height: max-content;
         border: 0.5px solid #d3d3d3;
         border-radius:0.5rem;
 
+
+
         .passHideAndShow {
+
           display: flex;
           justify-content:center;
           align-items:center;
-          width: 2rem;
+          width: 3rem;
           cursor: pointer;
         }
 
         input {
           font-family: font-bold;
-          width: 18rem;
+          width: 21rem;
           border: none;
           padding: 1rem;
           outline: none;
@@ -118,266 +234,843 @@ $seaSalt:#F9F9F9;
     }
   }
 }
-
-.dashboard {
+.backLink{
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+  align-self: center;
+  &:hover{
+    color:red;
+  }
+}
+.header{
   width: 100%;
-  height:100vh;
-  display: flex;
-  gap: 3.5rem;
+  height:4rem;
+  background-color:#fcfbfe;
+  position: sticky;
+  top: 0;
+  color:$textAndIcon;
+  font-family: font-bold;
+  justify-content: space-between;
+  display:flex;
+  align-items: center;
+  z-index: 1;
+  h2{
 
-  .dashboard__menu {
-    margin-top: 2rem;
-    padding: 0.5rem;
-    width: 20%;
-    height: 43rem;
-    background-color: $onyx;
-    border-bottom-left-radius: 2rem;
-    border-top-left-radius: 2rem;
+    font-size: 20px;
+    padding-right: 0.75rem;
+  }
+  .header__leftBox{
+    margin-left: 1rem;
     display: flex;
-    gap: 1rem;
-    flex-direction:column;
-    color: #F9F9F9;
-    position: relative;
-
-    .exitBTN {
-      position: absolute;
-      bottom:25px;
-      width: 90%;
-      background-color:$poppy;
-      height: 2rem;
-      font-family: font-regular;
-      color: #F9F9F9;
-      outline:none;
-      border:none;
-      border-radius:0.5rem;
-      cursor: pointer;
-      &:hover{
-        background-color:red;
+    align-items: center;
+    transform: rotateY(180deg)
+  }
+}
+.dashboard__menu {
+  padding: 0.5rem;
+  width: 18%;
+  height: 100dvh;
+  background-color: #f3f6fd;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: flex;
+  gap: 1rem;
+  flex-direction:column;
+  color: $textAndIcon;
+  z-index: 2;
+  font-size: 16px;
+  .dashboard__bottomDescription{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 10px;
+    gap: 1.25rem;
+    padding:0.5rem;
+    color: $textAndIcon;
+    font-family: font-numLight;
+    .expireDate{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h5{
+        width: 5rem;
+        text-align: center;
+        padding: 0.25rem;
+        background-color: #fff;
+        font-family: font-numReg;
       }
     }
-    .dashboard__img{
+    .description{
       width: 100%;
-      display: flex;
-      flex-direction:column;
-      align-items: center;
-      border-bottom: 0.5px solid darkgoldenrod;
-
-      img{
-        width: 120px;
-        height: 120px;
-      }
-      h3 {
-        font-family: font-regular ;
-      }
-    }
-    .compose__bill{
-      width: 95%;
-      height: 3rem;
-      background-color:$emerald;
-      font-family: font-bold;
-      color: #F9F9F9;
-      border: none;
-      outline: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      &:hover {
-        background-color: #2ac374;
-      }
-    }
-    .dashboard__menuItem{
-      width: 95%;
-      font-family:font-regular;
-      display: flex;
-      align-items: center;
-      padding-right: 1.5rem;
-      gap: 1.5rem;
-      cursor: pointer;
-      &:hover .item__circle{
-        background-color: $emerald;
-      }
-      &:hover p{
-        color: #F9F9F9;
-      }
-      .item__circle{
-        width: 1rem;
-        height: 1rem;
-        background-color:$seaSalt;
-        border-radius: 50%;
-      }
-      p{
-        color: #aeaeae;
+      h6{
+        font-size:12px;
+        text-align: center;
       }
     }
 
   }
-  .dashboard__box {
-    width: 72%;
-    height: 43rem;
+  .compose__billButton{
+    width: 95%;
+    height: 3rem;
+    background-color:#61C877;
+    font-size: medium;
+    font-family:font-numLight;
+    color: $seaSalt;
+    outline: none;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    &:hover {
+      background-color: #3da054;
+      color:$seaSalt;
+    }
+  }
+  .userName{
+    text-align: center;
+    padding-bottom: 1rem;
     display: flex;
-    padding-top: 3rem;
-    flex-direction: column;
+    width: 100%;
+    font-size: 14px;
+    gap: 1rem;
     align-items: center;
-    font-family: font-regular;
 
-    .header__box {
-      padding-bottom: 0.75rem;
-      text-align: center;
-      width: 100%;
-      font-family: font-bold;
-      border-bottom: 0.5px solid #d3d3d3;
-
-      h1 {
-        width: 100%;
-        border: 0.5px solid #d3d3d3;
-        border-radius: 1rem;
-        padding: 0.25rem;
-        background-color: #F9F9F9;
-      }
-      .header__customerItem {
-        font-family: font-numReg;
-        padding: 1rem;
-        width: 12rem;
-        display: flex;
-        justify-content: space-around;
-        flex-direction: row;
-        align-items: center;
-        color: #F9F9F9;
-        border-radius: 1rem;
-
-        svg {
-          width: 1.5rem;
-          height: 1.5rem;
-        }
-        &:nth-child(1) {
-          background-color: #d3d3d3;
-          &:hover {
-            color: $onyx;
-            cursor: pointer;
-          }
-        }
-
-        &:nth-child(2) {
-          background-color: #d3d3d3;
-          &:hover {
-            color: $onyx;
-            cursor: pointer;
-          }
-        }
-
-        &:nth-child(3) {
-          background: linear-gradient(to right, #2a2aff, #6d6dff);
-          &  p {
-            font-size: large;
-          }
-        }
-
-        &:nth-child(4) {
-          background: linear-gradient(to right, #26ff28, #6efd98);
-          & p {
-            font-size: large;
-          }
-        }
-      }
-      .header__item {
-        font-family: font-numReg;
-        padding: 1rem;
-        width: 20rem;
-        display: flex;
-        justify-content: space-around;
-        flex-direction: row;
-        align-items: center;
-        color: #F9F9F9;
-        border-radius: 1rem;
-
-        svg {
-          width: 1.5rem;
-          height: 1.5rem;
-        }
-
-        &:nth-child(1) {
-          background: linear-gradient(to right, #2a2aff, #6d6dff);
-        }
-
-        &:nth-child(2) {
-          background: linear-gradient(to right, #26ff28, #6efd98);
-        }
-
-        &:nth-child(3) {
-          background: linear-gradient(to right, rgba(255, 111, 30, 0.76), rgba(255, 158, 99, 0.76));
-        }
-
-      }
+    h3 {
+      font-family:font-numlight;
     }
-    .chart__box {
-      padding-top: 4rem;
-      padding-left: 4rem;
-      width: 100%;
-      display: grid;
-      justify-content: space-around;
-      justify-items: center;
-      grid-template-columns: repeat(2, 20rem);
-      grid-template-rows: repeat(1, 20rem);
-    }
-    .table__box{
-      padding-top: 2rem;
-      padding-bottom: 1rem;
-      width: 100%;
-      height:max-content;
-      box-shadow: 0 0 1px 4px #f3f3f3;
+  }
+  .menu__Box{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top:2rem;
+    height:max-content;
+    .dashboard__menuItem{
+      font-size: 14px;
+      color:$textAndIcon;
+      width: 95%;
+      height: 3rem;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 2rem;
-      input{
-        font-family: font-regular;
-        font-size:large;
-        width: 65%;
-        height: 2rem;
-        border-radius: 1rem;
-        border: 1px solid #d3d3d3;
-        padding: 0.5rem;
-        outline: none;
-      }
-      table{
-        font-family: font-numLight;
-        border-collapse: collapse;
-        width: 100%;
-        thead{
-          border: 0.5px solid #d3d3d3;
-          th{
-            text-align: center;
-          }
-        }
-        tbody{
-          padding-top:0.25rem;
-          tr{
-            &:nth-child(2n+1){
-              background-color: #d3d3d3;
-            }
-            &:hover{
-              background-color: #c5c5c5;
-            }
-            td{
-              &:first-child{
-                padding:0.3rem;
-                span{
-                  background-color: #2ac374 ;
-                  color: $seaSalt;
-                }
-              }
-              &:nth-child(9){
-                color: green;
-              }
-              &:last-child{
-                cursor: pointer;
-              }
-              border-collapse: collapse;
-              text-align: center;
-            }
-          }
-        }
+      justify-content:flex-start;
+      text-decoration: none;
+      gap: 2.5rem;
+      border-radius: 0.25rem;
+      font-family:font-regular;
+      text-align: center;
+      padding-right: 1.5rem;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+
+      &:hover{
+        color:#6b7c93;
+        border-right: 5px solid #6b7c93;
+        font-weight: 550;
       }
     }
   }
 
 }
+.addNew__Product{
+  font-size: 18px;
+  position: relative;
+  width: 100%;
+  height:max-content;
+  display: grid;
+  align-items:center;
+  grid-template-columns: repeat(4,1fr);
+  padding:2rem;
+  gap: 2rem;
+  font-family: font-light;
+  .ModalBox__Items{
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    .searchBox__items{
+      display: flex;
+      gap: 2rem;
+      padding: 0.5rem;
+      align-items: center;
+      width: 20rem;
+      border: 1px solid #bebebe;
+      border-radius: 0.25rem;
+    }
+  }
+}
+.addNew__Customer{
+  font-family: font-light;
+  font-size: 16px;
+  align-self: center;
+  position: relative;
+  width: 100%;
+  height:max-content;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3,1fr);
+  justify-items: center;
+  padding:1rem;
+  .ModalBox__Items{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    .MuiFormControl-root{
+      width: 100%;
+    }
+    .MuiAutocomplete-root{
+      width: 100%;
+      .MuiFormControl-root{
+        width: 100%;
+      }
+
+    }
+  }
+
+}
+.chart__ItemIcon{
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #016fff;
+  background-color: #D3D1F8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+.BackDrop{
+  width:100%;
+  height:100%;
+  position:fixed;
+  left:0;
+  top:0;
+  background-color: rgba(0,0,0,0.5);
+  z-index:199;
+}
+.ModalBox{
+  font-size: 16px;
+  width:35rem;
+  height:max-content;
+  padding:1rem;
+  background-color: #fff;
+  border-radius:1rem;
+  font-family:font-numlight;
+  z-index:1000;
+  position:fixed;
+  left:35%;
+  top: 25%;
+  display: flex;
+  flex-direction:column;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+  .ModalBoxes{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    .dragModal{
+      position: relative;
+      cursor: pointer;
+      p{
+        z-index: 5;
+        position: absolute;
+        top: 45%;
+        left: 10%;
+        &:last-child{
+          top: 65%;
+          left: 40%;
+        }
+      }
+      input{
+        z-index: 10;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+    }
+    .ModalBox__Child{
+      width: 50%;
+      height: 15rem;
+      display: flex;
+      align-items:center;
+      justify-content: center;
+      border: 1px dashed #d3d3d3;
+      cursor: pointer;
+      &:hover{
+        background-color: #d3d3d3;
+        color:$seaSalt;
+      }
+    }
+  }
+
+}
+.AddModalBox{
+  font-size: 16px;
+  width:50rem;
+  height:max-content;
+  padding:1rem;
+  background-color: #fff;
+  border-radius:1rem;
+  font-family: font-numLight;
+  z-index: 200;
+  position:fixed;
+  left:22%;
+  top: 10%;
+  display: flex;
+  flex-direction:column;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+  .AddModalBoxes{
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: center;
+
+    .addButton{
+      width: 20rem;
+      align-self: center;
+    }
+
+    .ModalBox__Items{
+      font-size: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+
+}
+.BillForm{
+  font-size: 16px;
+  font-family:font-numlight;
+  direction: rtl;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap:2.5rem;
+  .BillForm__Children{
+    font-size:larger;
+    width: 100%;
+    height: 3rem;
+    border-radius:0.25rem;
+    padding: 0.5rem;
+    display: flex;
+    font-family: font-numLight;
+    background-color: transparent;
+    border: 1px solid black;
+    &:focus{
+      border: 2px solid #5046E5;
+    }
+    input{
+      font-family: font-numLight;
+      font-size:large;
+      padding: 0.5rem;
+      border: none;
+      width: 75%;
+      height: 100%;
+      outline: none;
+    }
+
+  }
+  button{
+    font-size:larger;
+    width: 100%;
+    height: 2rem;
+    border-radius:0.25rem;
+    padding: 0.5rem;
+    outline: none;
+    color: $seaSalt;
+    background-color: #5046E5;
+    border: none;
+    cursor: pointer;
+  }
+}
+.DashBoardBox{
+  font-size: 16px;
+  color: $seaSalt;
+  border-radius: 0.5rem;
+  width: 100%;
+  height:30%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  font-family: font-numLight;
+  h2{
+    font-family: font-numBold
+  }
+  p{
+    font-size:20px;
+    padding-bottom: 0.75rem;
+  }
+}
+.table__boxCus{
+  font-size: 16px;
+  direction: rtl;
+  font-family:font-numlight;
+  padding: 1rem;
+  background-color:#FFFFFF;
+  width: 100%;
+  height: max-content;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  input{
+    font-family: font-numReg;
+    width:30rem;
+    padding:1rem;
+    height: 3rem;
+    outline:none;
+    border: 1px solid #d3d3d3;
+    border-radius:0.5rem;
+  }
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    thead{
+      border-bottom: 1px solid #d3d3d3;
+      th{
+        text-align: center;
+        padding:0.25rem;
+      }
+    }
+    tbody{
+      tr{
+        border-bottom: 1px solid #d3d3d3;
+        &:hover{
+          cursor: pointer;
+          background-color: #e3e3e3;
+        }
+        td{
+          padding:0.75rem;
+          text-align: center;
+
+          &:first-child{
+            span{
+              color: $seaSalt;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+.table__boxStuff{
+  font-size: 16px;
+  direction: rtl;
+  font-family:font-numlight;
+  padding: 1rem;
+  background-color:#FFFFFF;
+  width: 100%;
+  height: max-content;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  input{
+    font-family: font-numReg;
+    width:30rem;
+    padding:1rem;
+    height: 3rem;
+    outline:none;
+    border: 1px solid #d3d3d3;
+    border-radius:0.5rem;
+  }
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    thead{
+      border-bottom: 1px solid #d3d3d3;
+      th{
+        text-align: center;
+        padding:0.25rem;
+      }
+    }
+    tbody{
+      tr{
+        border-bottom: 1px solid #d3d3d3;
+        &:hover{
+          cursor: pointer;
+          background-color: #e3e3e3;
+        }
+        td{
+          padding:0.75rem;
+          text-align: center;
+
+        }
+      }
+
+    }
+  }
+}
+.addBill__page{
+  font-size: 16px;
+  padding:1.5rem;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  .MuiButtonBase-root{
+    font-family:font-regular;
+  }
+  font-family:font-numlight;
+  .MuiStepLabel-root{
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    justify-items: center;
+    gap: 0.5rem;
+    font-size: 18px;
+    .MuiStepLabel-label{
+      font-family:font-regular;
+    }
+  }
+
+  h1{
+    font-size: 20px;
+    font-family: font-light;
+  }
+  .DatePicker1{
+    padding-right:0.5rem ;
+    background-color: transparent;
+    font-family:font-numReg;
+    width: 16rem;
+    height: 2.5rem;
+    border:none;
+    outline:none;
+    font-size: 12px;
+    cursor:pointer;
+  }
+}
+.dashboard {
+  width: 82%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f7fb;
+  .dashboard__Box{
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    padding: 1.5rem;
+    h1{
+      font-family: font-numlight;
+    }
+    .chartBox{
+      width: 100%;
+      height: 25rem;
+      display: flex;
+      gap: 1rem;
+      font-family:font-numlight;
+      .chart__leftBox{
+        display: flex;
+        flex-direction:column ;
+        gap: 0.5rem;
+        padding: 1rem;
+        width: 65%;
+        font-size: 12px;
+        height: 100%;
+        background-color: $backgroundBox;
+        font-family:font-numLight;
+        border-radius: 0.5rem;
+        position:static;
+      }
+      .chart__rightBox{
+
+        font-family:font-numReg;
+        width: 35%;
+        height: 100%;
+        display: grid;
+        gap:1rem;
+        grid-template-columns: repeat(6,1fr);
+        grid-template-rows: repeat(6,1fr);
+
+        .chart__rightBoxItem:nth-child(1){
+          font-size: 14px;
+          grid-column: 1/7;
+          grid-row: 1/5;
+          background-color: $backgroundBox;
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          font-family:font-numLight;
+          border-radius: 0.5rem;
+        }
+        .chart__rightBoxItem:nth-child(2){
+          font-size: 16px;
+          grid-column: 1/4;
+          grid-row: 5/7;
+          background-color: $backgroundBox;
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          font-family:font-numLight;
+          border-radius: 0.5rem;
+          h2{
+            font-family: font-numReg;
+          }
+        }
+        .chart__rightBoxItem:nth-child(3){
+          font-size: 16px;
+          grid-column: 4/7;
+          grid-row: 5/7;
+          background-color: $backgroundBox;
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          font-family:font-numLight;
+          border-radius: 0.5rem;
+          h2{
+            font-family: font-numReg;
+          }
+        }
+      }
+    }
+    .billDetails__Box{
+      display: flex;
+      width: 100%;
+      height:max-content;
+      gap:2rem;
+      .billDetails__RightBox{
+        width: 75%;
+        font-family:font-numlight;
+        padding: 1rem;
+        height: max-content;
+        background-color: $backgroundBox;
+        border-radius: 0.5rem;
+        display: flex;
+        gap: 0.75rem;
+        flex-direction:column;
+        align-items: center;
+        justify-content:space-between;
+        h4{
+          font-size:20px;
+          align-self:start;
+        }
+        table{
+          font-family:font-numlight;
+          width: 100%;
+          border-collapse: collapse;
+          thead{
+            border-bottom: 1px solid #9d9d9d;
+            th{
+              text-align: center;
+              padding:0.25rem;
+            }
+          }
+          tbody{
+            tr{
+              &:nth-child(2n+1){
+                background-color: #e6e6e6;
+              }
+              td{
+                padding:0.75rem;
+                text-align: center;
+              }
+            }
+
+          }
+        }
+      }
+      .billDetails__leftBox{
+        width: 25%;
+        height: 37.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        font-family:font-numlight;
+      }
+    }
+    .header__box{
+      width: 73.5%;
+      .header__customerItem{
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        gap: 2rem;
+        font-family:font-numlight;
+        font-size:20px;
+        grid-column:1/5;
+        padding: 0.5rem;
+        text-align: center;
+        background-color: $backgroundBox;
+        border-radius: 1rem;
+        color: #5046E5;
+        cursor: pointer;
+        &:hover{
+          background-color:$emerald;
+          color: #fff;
+        }
+      }
+    }
+    .mainBox{
+      font-size:16px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      gap: 2rem;
+      font-family:font-numlight;
+      .colBoxes {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .table__box{
+        direction: rtl;
+        font-family:font-numReg;
+        padding: 1rem;
+        background-color:$backgroundBox;
+        width: 75%;
+        height: max-content;
+        gap: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        table{
+          font-family:font-numlight;
+          width: 100%;
+          border-collapse: collapse;
+          thead{
+            border-bottom: 1px solid #d3d3d3;
+            th{
+              text-align: center;
+              padding:0.25rem;
+            }
+          }
+          tbody{
+            tr{
+              &:nth-child(2n){
+                background-color:#d3d3d3;
+              }
+              td{
+                padding:0.75rem;
+                text-align: center;
+
+                &:first-child{
+                  span{
+                    color: $seaSalt;
+                    background-color: red;
+                  }
+                }
+              }
+            }
+
+          }
+        }
+      }
+    }
+    .bill__chartBox{
+      width: 100%;
+      height: max-content;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family:font-numlight;
+      .bill__chartBoxRight{
+        font-size:20px;
+        width: 70%;
+        height: 30rem;
+        background-color: $backgroundBox;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        gap: 2.7rem;
+        p {
+          font-family:font-regular;
+        }
+      }
+      .bill__chartBoxLeft{
+        width: 25%;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        .DashBoardBox{
+          font-size:16px;
+          color: $seaSalt;
+          border-radius: 0.5rem;
+          width: 100%;
+          height: 6rem;
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content:space-between;
+          font-family:font-numlight;
+        }
+
+      }
+    }
+    .bill__tableBox{
+
+      font-family:font-numlight;
+        padding: 1rem;
+        background-color:$backgroundBox;
+        width: 100%;
+        height: max-content;
+        gap: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        table{
+          font-family:font-numlight;
+          width: 100%;
+          border-collapse: collapse;
+          thead{
+            border-bottom: 1px solid #9d9d9d;
+            th{
+              text-align: center;
+              padding:0.25rem;
+            }
+          }
+          tbody{
+            tr{
+              &:nth-child(2n+1){
+                background-color: #e6e6e6;
+              }
+              td{
+                padding:0.75rem;
+                text-align: center;
+
+                &:first-child{
+                  span{
+                    color: $seaSalt;
+                    background-color: red;
+                  }
+                }
+                &:nth-last-child(2){
+                  color: green;
+                }
+              }
+            }
+
+          }
+
+      }
+    }
+
+  }
+}
+
